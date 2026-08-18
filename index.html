@@ -9,34 +9,63 @@
 
   <title>Specimen Information System</title>
 
+
   <style>
 
     * {
       box-sizing: border-box;
     }
 
+
     body {
+
       margin: 0;
+
       font-family: Georgia, "Times New Roman", serif;
+
       background:
-        radial-gradient(circle at 20% 20%, rgba(46, 125, 50, 0.25), transparent 30%),
-        radial-gradient(circle at 80% 30%, rgba(212, 175, 55, 0.18), transparent 30%),
-        linear-gradient(135deg, #061b2d, #0b3d35 50%, #102a20);
+        radial-gradient(
+          circle at 15% 20%,
+          rgba(46, 125, 50, 0.25),
+          transparent 30%
+        ),
+
+        radial-gradient(
+          circle at 85% 30%,
+          rgba(212, 175, 55, 0.18),
+          transparent 30%
+        ),
+
+        linear-gradient(
+          135deg,
+          #061b2d,
+          #0b3d35 50%,
+          #102a20
+        );
+
       color: #18253a;
+
       min-height: 100vh;
-      position: relative;
+
       overflow-x: hidden;
+
     }
 
 
-    /* Decorative web pattern */
+    /* Decorative background web */
 
     body::before {
+
       content: "";
+
       position: fixed;
+
       width: 500px;
+
       height: 500px;
+
       right: -180px;
+
       top: -180px;
 
       background:
@@ -49,494 +78,837 @@
         );
 
       border-radius: 50%;
+
       transform: rotate(20deg);
+
       pointer-events: none;
+
       opacity: 0.45;
+
     }
 
 
-    /* Large spider watermark */
-
-    body::after {
-      content: "🕷";
-      position: fixed;
-      right: -30px;
-      bottom: 20px;
-      font-size: 300px;
-      opacity: 0.055;
-      transform: rotate(-12deg);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-
-    /* Header */
+    /* =========================
+       HEADER
+       ========================= */
 
     .header {
+
       background: rgba(3, 20, 36, 0.96);
+
       color: white;
+
       padding: 24px 20px;
+
       border-bottom: 3px solid #d6ae45;
+
       position: relative;
-      z-index: 2;
+
+      z-index: 5;
+
     }
 
 
     .header-inner {
+
       max-width: 1000px;
+
       margin: auto;
+
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
+
       gap: 20px;
+
     }
 
 
     .brand {
+
       display: flex;
+
       align-items: center;
+
       gap: 15px;
+
     }
 
 
     .spider-logo {
+
       width: 64px;
+
       height: 64px;
+
       border: 2px solid #d6ae45;
+
       border-radius: 50%;
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
-      font-size: 35px;
+
       background: rgba(255,255,255,0.08);
+
+      padding: 8px;
+
+    }
+
+
+    .spider-logo svg {
+
+      width: 100%;
+
+      height: 100%;
+
+      color: #d6ae45;
+
     }
 
 
     .brand h1 {
+
       margin: 0;
+
       font-size: 30px;
+
       letter-spacing: 3px;
+
     }
 
 
     .brand p {
+
       margin: 5px 0 0;
+
       color: #d6ae45;
+
       font-size: 14px;
+
       letter-spacing: 1.5px;
+
     }
 
 
     .tagline {
+
       text-align: right;
+
       font-style: italic;
+
       color: #eee;
+
       font-size: 14px;
+
+      line-height: 1.6;
+
     }
 
 
-    /* Main */
+    /* =========================
+       MAIN
+       ========================= */
 
     .main {
+
       max-width: 760px;
+
       margin: 45px auto;
+
       padding: 0 18px;
+
       position: relative;
-      z-index: 1;
+
+      z-index: 2;
+
     }
 
 
-    /* Title */
-
     .title-section {
+
       text-align: center;
+
       color: white;
+
       margin-bottom: 28px;
+
     }
 
 
     .title-section h2 {
+
       font-size: 40px;
+
       margin: 0 0 10px;
+
       letter-spacing: 1px;
-      text-shadow: 0 3px 10px rgba(0,0,0,0.4);
+
+      text-shadow:
+        0 3px 10px rgba(0,0,0,0.4);
+
     }
 
 
     .title-section p {
+
       margin: 0 auto;
+
       display: inline-block;
+
       padding: 8px 25px;
+
       border-radius: 30px;
+
       background: rgba(214,174,69,0.95);
+
       color: #082238;
+
       font-weight: bold;
+
       letter-spacing: 1px;
+
       font-family: Arial, sans-serif;
+
     }
 
 
-    /* Main card */
+    /* =========================
+       MAIN CARD
+       ========================= */
 
     .card {
+
       background: rgba(255,255,255,0.97);
+
       border-radius: 24px;
+
       padding: 28px;
+
       box-shadow:
         0 20px 60px rgba(0,0,0,0.35),
         inset 0 0 0 1px rgba(255,255,255,0.7);
+
       position: relative;
+
       overflow: hidden;
+
     }
 
 
-    /* Card spider watermark */
+    /* =========================
+       SPIDER WATERMARK
+       ========================= */
 
-    .card::after {
-      content: "🕷";
+    .spider-watermark {
+
       position: absolute;
-      right: 10px;
-      bottom: 70px;
-      font-size: 220px;
-      opacity: 0.035;
-      transform: rotate(-15deg);
+
+      width: 390px;
+
+      height: 390px;
+
+      right: 50%;
+
+      bottom: 20px;
+
+      transform: translateX(50%);
+
+      color: #17633f;
+
+      opacity: 0.10;
+
       pointer-events: none;
+
+      z-index: 1;
+
     }
 
+
+    .spider-watermark svg {
+
+      width: 100%;
+
+      height: 100%;
+
+    }
+
+
+    /* =========================
+       CARD HEADING
+       ========================= */
 
     .card-heading {
-      background: linear-gradient(135deg, #06223c, #075444);
+
+      background:
+        linear-gradient(
+          135deg,
+          #06223c,
+          #075444
+        );
+
       color: white;
+
       padding: 22px;
+
       border-radius: 18px;
+
       text-align: center;
+
       margin-bottom: 22px;
+
       border-bottom: 3px solid #d6ae45;
+
       position: relative;
-      z-index: 1;
+
+      z-index: 3;
+
     }
 
 
     .card-heading h3 {
+
       margin: 0;
+
       font-size: 29px;
+
       letter-spacing: 1px;
+
     }
 
 
     .card-heading p {
+
       margin: 8px 0 0;
+
       color: #d6ae45;
+
       font-family: Arial, sans-serif;
+
       font-size: 12px;
+
       letter-spacing: 4px;
+
       font-weight: bold;
+
     }
 
 
-    /* Metadata */
+    /* =========================
+       DATA AREA
+       ========================= */
 
     #data {
+
       position: relative;
-      z-index: 2;
+
+      z-index: 3;
+
     }
 
 
     .item {
+
       margin-bottom: 14px;
+
       padding: 17px 20px;
+
       border-radius: 15px;
+
       border-left: 6px solid #166534;
-      background: linear-gradient(
-        90deg,
-        #f0f8f3,
-        #ffffff
-      );
-      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
 
+      background:
+        linear-gradient(
+          90deg,
+          #f0f8f3,
+          #ffffff
+        );
 
-    .item:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 7px 17px rgba(0,0,0,0.12);
-    }
-
-
-    .label {
-      font-family: Arial, sans-serif;
-      text-transform: uppercase;
-      font-size: 12px;
-      letter-spacing: 1.4px;
-      color: #17633f;
-      font-weight: bold;
-      margin-bottom: 7px;
-    }
-
-
-    .value {
-      color: #26384a;
-      font-size: 17px;
-      line-height: 1.55;
-      word-break: break-word;
-    }
-
-
-    /* Different colours for metadata */
-
-    .item:nth-child(1) {
-      border-left-color: #d69e2e;
-      background: linear-gradient(90deg, #fff8e6, white);
-    }
-
-    .item:nth-child(2) {
-      border-left-color: #198754;
-      background: linear-gradient(90deg, #eefaf2, white);
-    }
-
-    .item:nth-child(3) {
-      border-left-color: #6941c6;
-      background: linear-gradient(90deg, #f6f0ff, white);
-    }
-
-    .item:nth-child(4) {
-      border-left-color: #087ea4;
-      background: linear-gradient(90deg, #eef9fc, white);
-    }
-
-    .item:nth-child(5) {
-      border-left-color: #c73e1d;
-      background: linear-gradient(90deg, #fff3ef, white);
-    }
-
-    .item:nth-child(6) {
-      border-left-color: #198754;
-      background: linear-gradient(90deg, #eefaf2, white);
-    }
-
-
-    /* More Information */
-
-    .more-info {
-      text-align: center;
-      margin-top: 28px;
-      padding-top: 23px;
-      border-top: 1px dashed #9aa7a1;
-      position: relative;
-      z-index: 3;
-    }
-
-
-    .more-info a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-width: 250px;
-      padding: 15px 28px;
-
-      background: linear-gradient(
-        135deg,
-        #06233d,
-        #08704d
-      );
-
-      color: white;
-      text-decoration: none;
-      border: 3px solid #d6ae45;
-      border-radius: 35px;
-
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      font-weight: bold;
-      letter-spacing: 0.5px;
-
-      box-shadow: 0 7px 18px rgba(0,0,0,0.2);
+      box-shadow:
+        0 4px 12px rgba(0,0,0,0.07);
 
       transition:
         transform 0.2s ease,
         box-shadow 0.2s ease;
+
+    }
+
+
+    .item:hover {
+
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 7px 17px rgba(0,0,0,0.12);
+
+    }
+
+
+    .label {
+
+      font-family: Arial, sans-serif;
+
+      text-transform: uppercase;
+
+      font-size: 12px;
+
+      letter-spacing: 1.4px;
+
+      color: #17633f;
+
+      font-weight: bold;
+
+      margin-bottom: 7px;
+
+    }
+
+
+    .value {
+
+      color: #26384a;
+
+      font-size: 17px;
+
+      line-height: 1.55;
+
+      word-break: break-word;
+
+    }
+
+
+    /* Different colours */
+
+    .item:nth-child(1) {
+
+      border-left-color: #d69e2e;
+
+      background:
+        linear-gradient(
+          90deg,
+          #fff8e6,
+          white
+        );
+
+    }
+
+
+    .item:nth-child(2) {
+
+      border-left-color: #198754;
+
+      background:
+        linear-gradient(
+          90deg,
+          #eefaf2,
+          white
+        );
+
+    }
+
+
+    .item:nth-child(3) {
+
+      border-left-color: #6941c6;
+
+      background:
+        linear-gradient(
+          90deg,
+          #f6f0ff,
+          white
+        );
+
+    }
+
+
+    .item:nth-child(4) {
+
+      border-left-color: #087ea4;
+
+      background:
+        linear-gradient(
+          90deg,
+          #eef9fc,
+          white
+        );
+
+    }
+
+
+    .item:nth-child(5) {
+
+      border-left-color: #c73e1d;
+
+      background:
+        linear-gradient(
+          90deg,
+          #fff3ef,
+          white
+        );
+
+    }
+
+
+    .item:nth-child(6) {
+
+      border-left-color: #198754;
+
+      background:
+        linear-gradient(
+          90deg,
+          #eefaf2,
+          white
+        );
+
+    }
+
+
+    /* =========================
+       MORE INFORMATION
+       ========================= */
+
+    .more-info {
+
+      text-align: center;
+
+      margin-top: 28px;
+
+      padding-top: 23px;
+
+      border-top: 1px dashed #9aa7a1;
+
+      position: relative;
+
+      z-index: 4;
+
+    }
+
+
+    .more-info a {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 10px;
+
+      min-width: 250px;
+
+      padding: 15px 28px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #06233d,
+          #08704d
+        );
+
+      color: white;
+
+      text-decoration: none;
+
+      border: 3px solid #d6ae45;
+
+      border-radius: 35px;
+
+      font-family: Arial, sans-serif;
+
+      font-size: 16px;
+
+      font-weight: bold;
+
+      letter-spacing: 0.5px;
+
+      box-shadow:
+        0 7px 18px rgba(0,0,0,0.2);
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
     }
 
 
     .more-info a:hover {
+
       transform: translateY(-3px);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.28);
+
+      box-shadow:
+        0 12px 25px rgba(0,0,0,0.28);
+
     }
 
 
     .more-info small {
+
       display: block;
+
       margin-top: 9px;
+
       color: #777;
+
       font-family: Arial, sans-serif;
+
       font-size: 11px;
+
     }
 
 
-    /* Loading */
+    /* =========================
+       LOADING
+       ========================= */
 
     .loading {
+
       text-align: center;
+
       padding: 30px;
+
       color: #536471;
+
       font-family: Arial, sans-serif;
+
     }
 
 
     .loader {
+
       width: 38px;
+
       height: 38px;
+
       border: 4px solid #dfe8e3;
+
       border-top-color: #17633f;
+
       border-radius: 50%;
+
       margin: 0 auto 15px;
+
       animation: spin 0.9s linear infinite;
+
     }
 
 
     @keyframes spin {
+
       to {
         transform: rotate(360deg);
       }
+
     }
 
+
+    /* =========================
+       ERROR
+       ========================= */
 
     .error {
+
       text-align: center;
+
       color: #a61b1b;
+
       background: #fff0f0;
+
       padding: 15px;
+
       border-radius: 10px;
+
       font-family: Arial, sans-serif;
+
     }
 
 
-    /* Footer */
+    /* =========================
+       FOOTER
+       ========================= */
 
     .footer {
+
       background: rgba(3, 20, 36, 0.96);
+
       color: white;
+
       text-align: center;
+
       padding: 24px 15px;
+
       margin-top: 45px;
+
       border-top: 3px solid #d6ae45;
+
       position: relative;
-      z-index: 2;
+
+      z-index: 5;
+
     }
 
 
     .footer strong {
+
       color: #d6ae45;
+
     }
 
 
     .footer p {
+
       margin: 5px 0;
+
       font-family: Arial, sans-serif;
+
       font-size: 13px;
+
     }
 
 
-    /* Mobile */
+    /* =========================
+       MOBILE
+       ========================= */
 
     @media (max-width: 650px) {
 
-      body {
-        padding: 0;
-      }
-
 
       .header {
+
         padding: 18px 15px;
+
       }
 
 
       .header-inner {
+
         justify-content: center;
+
       }
 
 
       .tagline {
+
         display: none;
+
       }
 
 
       .spider-logo {
+
         width: 52px;
+
         height: 52px;
-        font-size: 28px;
+
       }
 
 
       .brand h1 {
+
         font-size: 21px;
+
         letter-spacing: 2px;
+
       }
 
 
       .brand p {
+
         font-size: 10px;
+
       }
 
 
       .main {
+
         margin: 25px auto;
+
         padding: 0 12px;
+
       }
 
 
       .title-section h2 {
+
         font-size: 28px;
+
       }
 
 
       .title-section p {
+
         font-size: 11px;
+
         padding: 7px 15px;
+
       }
 
 
       .card {
+
         padding: 17px;
+
         border-radius: 18px;
+
       }
 
 
       .card-heading {
+
         padding: 18px 10px;
+
       }
 
 
       .card-heading h3 {
+
         font-size: 24px;
+
       }
 
 
       .card-heading p {
+
         font-size: 9px;
+
         letter-spacing: 3px;
+
       }
 
 
       .item {
+
         padding: 15px;
+
       }
 
 
       .value {
+
         font-size: 16px;
+
       }
 
 
       .more-info a {
+
         width: 100%;
+
         min-width: 0;
+
       }
 
 
-      body::after {
-        font-size: 190px;
+      .spider-watermark {
+
+        width: 300px;
+
+        height: 300px;
+
+        bottom: 30px;
+
       }
 
     }
@@ -549,17 +921,114 @@
 <body>
 
 
-  <!-- HEADER -->
+  <!-- =========================================
+       HEADER
+       ========================================= -->
 
   <header class="header">
 
     <div class="header-inner">
 
+
       <div class="brand">
 
+
+        <!-- Small spider logo -->
+
         <div class="spider-logo">
-          🕷️
+
+          <svg
+            viewBox="0 0 300 300"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+
+            <ellipse
+              cx="150"
+              cy="155"
+              rx="35"
+              ry="55"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="6"
+            />
+
+            <circle
+              cx="150"
+              cy="90"
+              r="25"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="6"
+            />
+
+            <path
+              d="M125 110 L75 70 L35 45"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="6"
+              stroke-linecap="round"
+            />
+
+            <path
+              d="M120 125 L65 115 L20 100"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="6"
+              stroke-linecap="round"
+            />
+
+            <path
+              d="M115 150 L60 160 L15 180"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="6"
+              stroke-linecap="round"
+            />
+
+            <path
+              d="M120 175 L70 210 L35 250"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="6"
+              stroke-linecap="round"
+            />
+
+            <path
+              d="M175 110 L225 70 L265 45"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="6"
+              stroke-linecap="round"
+            />
+
+            <path
+              d="M180 125 L235 115 L280 100"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="6"
+              stroke-linecap="round"
+            />
+
+            <path
+              d="M185 150 L240 160 L285 180"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="6"
+              stroke-linecap="round"
+            />
+
+            <path
+              d="M180 175 L230 210 L265 250"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="6"
+              stroke-linecap="round"
+            />
+
+          </svg>
+
         </div>
+
 
         <div>
 
@@ -569,16 +1038,20 @@
 
         </div>
 
+
       </div>
 
 
       <div class="tagline">
 
-        Exploring • Documenting • Preserving<br>
+        Exploring • Documenting • Preserving
+
+        <br>
 
         <span>The Hidden World of Spiders</span>
 
       </div>
+
 
     </div>
 
@@ -586,7 +1059,9 @@
 
 
 
-  <!-- MAIN -->
+  <!-- =========================================
+       MAIN
+       ========================================= -->
 
   <main class="main">
 
@@ -604,15 +1079,164 @@
     <div class="card">
 
 
-      <div class="card-heading">
+      <!-- =====================================
+           LARGE SPIDER WATERMARK
+           ===================================== -->
 
-        <h3>🕷 Specimen Details</h3>
+      <div class="spider-watermark">
 
-        <p>SCAN &nbsp; • &nbsp; IDENTIFY &nbsp; • &nbsp; LEARN</p>
+        <svg
+          viewBox="0 0 300 300"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+
+
+          <!-- Spider body -->
+
+          <ellipse
+            cx="150"
+            cy="155"
+            rx="38"
+            ry="58"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="5"
+          />
+
+
+          <!-- Spider head -->
+
+          <circle
+            cx="150"
+            cy="88"
+            r="25"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="5"
+          />
+
+
+          <!-- Left legs -->
+
+          <path
+            d="M125 105 L75 70 L35 45"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+
+          <path
+            d="M120 120 L65 115 L20 100"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+
+          <path
+            d="M115 145 L60 155 L15 175"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+
+          <path
+            d="M120 170 L70 205 L35 245"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+
+
+          <!-- Right legs -->
+
+          <path
+            d="M175 105 L225 70 L265 45"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+
+          <path
+            d="M180 120 L235 115 L280 100"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+
+          <path
+            d="M185 145 L240 155 L285 175"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+
+          <path
+            d="M180 170 L230 205 L265 245"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+
+
+          <!-- Small scientific dots -->
+
+          <circle
+            cx="150"
+            cy="88"
+            r="4"
+            fill="currentColor"
+          />
+
+          <circle
+            cx="138"
+            cy="82"
+            r="3"
+            fill="currentColor"
+          />
+
+          <circle
+            cx="162"
+            cy="82"
+            r="3"
+            fill="currentColor"
+          />
+
+
+        </svg>
 
       </div>
 
 
+
+      <!-- =====================================
+           SPECIMEN HEADING
+           ===================================== -->
+
+      <div class="card-heading">
+
+        <h3>Specimen Details</h3>
+
+        <p>
+          SCAN &nbsp; • &nbsp;
+          IDENTIFY &nbsp; • &nbsp;
+          LEARN
+        </p>
+
+      </div>
+
+
+
+      <!-- =====================================
+           DATA
+           ===================================== -->
 
       <div id="data">
 
@@ -634,7 +1258,9 @@
 
 
 
-  <!-- FOOTER -->
+  <!-- =========================================
+       FOOTER
+       ========================================= -->
 
   <footer class="footer">
 
@@ -646,10 +1272,10 @@
 
     <p>
 
-      Digital Specimen Documentation &nbsp; • &nbsp;
-
-      Research &nbsp; • &nbsp;
-
+      Digital Specimen Documentation
+      &nbsp; • &nbsp;
+      Research
+      &nbsp; • &nbsp;
       Biodiversity
 
     </p>
@@ -658,26 +1284,30 @@
 
 
 
+  <!-- =========================================
+       JAVASCRIPT
+       ========================================= -->
+
   <script>
 
 
-    /* ==================================================
-       GOOGLE APPS SCRIPT
-       ================================================== */
-
+    /* =========================================
+       GOOGLE APPS SCRIPT URL
+       ========================================= */
 
     const scriptURL =
       "https://script.google.com/macros/s/AKfycbxlVXxhUgXdGfFA6ykPuaHASbrGHelMGMGo27V2CHyJi2H89jmxcpudvNmqqg03xVX3/exec";
 
 
 
-    /* ==================================================
-       GET SPECIMEN ID FROM URL
-       ================================================== */
-
+    /* =========================================
+       GET ID FROM URL
+       ========================================= */
 
     const id =
-      new URLSearchParams(window.location.search).get("id");
+      new URLSearchParams(
+        window.location.search
+      ).get("id");
 
 
 
@@ -686,17 +1316,20 @@
 
 
 
-    /* ==================================================
+    /* =========================================
        CHECK ID
-       ================================================== */
-
+       ========================================= */
 
     if (!id) {
 
       dataContainer.innerHTML = `
+
         <div class="error">
+
           Specimen ID is missing.
+
         </div>
+
       `;
 
     }
@@ -704,18 +1337,20 @@
     else {
 
 
-      /* ==================================================
+      /* =========================================
          FETCH DATA
-         ================================================== */
-
+         ========================================= */
 
       fetch(
-        scriptURL + "?id=" + encodeURIComponent(id),
+        scriptURL +
+        "?id=" +
+        encodeURIComponent(id),
         {
           method: "GET",
           redirect: "follow"
         }
       )
+
 
       .then(response => {
 
@@ -735,17 +1370,20 @@
       .then(d => {
 
 
-        /* ==================================================
-           ERROR FROM GOOGLE SHEETS
-           ================================================== */
-
+        /* =========================================
+           CHECK ERROR
+           ========================================= */
 
         if (d.error) {
 
           dataContainer.innerHTML = `
+
             <div class="error">
+
               ${d.error}
+
             </div>
+
           `;
 
           return;
@@ -754,10 +1392,9 @@
 
 
 
-        /* ==================================================
-           SPECIMEN DATA
-           ================================================== */
-
+        /* =========================================
+           DISPLAY SPECIMEN DATA
+           ========================================= */
 
         let html = `
 
@@ -849,15 +1486,15 @@
 
 
 
-        /* ==================================================
+        /* =========================================
            MORE INFORMATION BUTTON
-           ================================================== */
-
+           ========================================= */
 
         if (
           d.more_information &&
           String(d.more_information).trim() !== ""
         ) {
+
 
           html += `
 
@@ -869,13 +1506,17 @@
                 rel="noopener noreferrer"
               >
 
-                📖 &nbsp; More Information &nbsp; ↗
+                📖 &nbsp;
+                More Information
+                &nbsp; ↗
 
               </a>
 
 
               <small>
+
                 Opens detailed specimen information
+
               </small>
 
             </div>
@@ -886,10 +1527,9 @@
 
 
 
-        /* ==================================================
-           DISPLAY DATA
-           ================================================== */
-
+        /* =========================================
+           INSERT HTML
+           ========================================= */
 
         dataContainer.innerHTML = html;
 
@@ -897,10 +1537,9 @@
       })
 
 
-      /* ==================================================
+      /* =========================================
          ERROR HANDLING
-         ================================================== */
-
+         ========================================= */
 
       .catch(error => {
 
